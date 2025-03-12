@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video con Sonido</title>
+    <style>
+        * { margin: 0; padding: 0; overflow: hidden; }
+        video { 
+            width: 100vw; 
+            height: 100vh; 
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay loop>
+        <source src="Video.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+    </video>
+
+    <script>
+        const video = document.getElementById('video');
+
+        video.play().then(() => {
+            video.muted = false; // Intentar activar el sonido
+        }).catch(() => {
+            setTimeout(() => {
+                video.muted = false;
+                video.play();
+            }, 1000); // Reintentar tras 1 segundo si el navegador bloquea el sonido
+        });
+    </script>
+</body>
+</html>

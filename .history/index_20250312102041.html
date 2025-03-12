@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto Exclusivo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #111; }
+        .container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            color: white;
+        }
+        .product-image {
+            width: 100%;
+            border-radius: 10px;
+            filter: brightness(50%);
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        p { font-size: 1.2em; margin-bottom: 20px; }
+        .btn {
+            background: #ff6600;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #ff4500; }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        video { 
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="producto.jpg" alt="Producto" class="product-image">
+        <div class="content">
+            <h1>Producto Increíble</h1>
+            <p>Lo que siempre quisiste, ahora a tu alcance</p>
+            <button class="btn" onclick="showVideo()">Descubre Más</button>
+        </div>
+    </div>
+    
+    <div class="video-container" id="videoContainer">
+        <span class="close" onclick="hideVideo()">&times;</span>
+        <video id="video" controls>
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+        </video>
+    </div>
+    
+    <script>
+        function showVideo() {
+            document.getElementById('videoContainer').style.display = 'flex';
+            document.getElementById('video').play();
+        }
+        function hideVideo() {
+            document.getElementById('videoContainer').style.display = 'none';
+            document.getElementById('video').pause();
+        }
+    </script>
+</body>
+</html>
